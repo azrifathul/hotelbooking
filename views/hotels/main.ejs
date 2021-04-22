@@ -11,35 +11,16 @@
 </head>
 
 <body>
-    <div class="navbar">
-      <div class=""></div>
-        <!-- <input /> -->
-        <div class="right-column">
-        <h4>My Booking</h4>
-        <h4>
-          <% if(role !== 'admin'){ %>
-          <a href="/login">
-            Login
-          </a>
-         <% } else { %>
-          <a href="/logout">
-            Logout
-          </a>
-         <% }%>
-
-      </h4>
-      </div>
-      
-    </div>
+  <%- include('partials/navbar', {role:role}) %>
     <div class="small-container">
         <h2 class="title">List Hotel</h2>       
         <div class="row">
             <% data.forEach((item) => { %>
                 <div class="col-4">
-                    <img src="<%= item.image || 'https://blackmantkd.com/wp-content/uploads/2017/04/default-image.jpg' %>">
+                    <img src="<%= item.image %>">
                     <h4 class="title-hotel"><%= item.name %></h4>
                     <h5 class="hotel-location"><%= item.location %></h5>
-                    <h3 class="hotel-price">Rp <%= item.price %> </h3>
+                    <h3 class="hotel-price"> <%= item.price %> </h3>
                     <% if(role === 'admin'){ %>
                       <div class="button-container">
                         <a href="/hotels/edit/<%= item.id %>" class="anchor-button">
@@ -66,7 +47,15 @@
   font-family: "Poppins", sans-serif;
 }
 
+.navbar-title{
+  color: #6C6A6A;
+  text-decoration: none;
+  margin-right: 16px;
+}
+
 .navbar{
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
     width: 100%;
@@ -77,6 +66,7 @@
     top:0;
     box-shadow: rgba(229, 230, 234, 0.36) 0px 2px 6px 2px;
     justify-content: space-between;
+    padding: 0 32px;
 }
 
 .right-column{
@@ -84,7 +74,6 @@
     font-size: 14px;
     width: 180px;
     justify-content: space-around;
-    margin-right: 16px;
 }
 
 .button-container{
@@ -132,10 +121,6 @@
   color: #42BBD4 ;
 }
 
-
-a:hover {
-  color: black;
-}
 
 .container {
   max-width: 1300px;

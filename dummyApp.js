@@ -11,8 +11,9 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use("/", hotelRouter);
+app.get("/", (req, res) => res.redirect("/hotels"));
+
 app.listen(port, () => console.log("working"));

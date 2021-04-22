@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <%- include('partials/navbar', {role:role}) %>
     <div class="container">
       <img
         src="https://png.pngtree.com/element_our/20200703/ourlarge/pngtree-hand-drawn-cartoon-space-astronaut-vector-image_2300696.jpg"
@@ -23,12 +24,14 @@
           <h4>ADD HOTEL DATA</h4>
           <label>Name</label>
           <input name="name" type="text" value="<%= data.name %>" />
+          <div class="errors-container"><%= errors.name %></div>
           <label>Rating</label>
           <input name="rating" type="number" value="<%= data.rating %>" />
           <label>Location</label>
           <input name="location" type="text" value="<%= data.location %>" />
           <label>Price</label>
           <input name="price" type="number" value="<%= data.price %>" />
+          <div class="errors-container"><%= errors.price %></div>
           <label>Image Source</label>
           <input name="image" type="text" value="<%= data.image %>" />
           <button><%= type === 'edit'?'update' :'add' %> Hotel</button>
@@ -36,6 +39,42 @@
       </div>
     </div>
     <style>
+      * {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .navbar-title {
+        color: #6c6a6a;
+        text-decoration: none;
+        margin-right: 16px;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        z-index: 2;
+        position: fixed;
+        height: 70px;
+        background: white;
+        top: 0;
+        box-shadow: rgba(229, 230, 234, 0.36) 0px 2px 6px 2px;
+        justify-content: space-between;
+        padding: 0 32px;
+        left: 0;
+        right: 0;
+      }
+
+      .right-column {
+        display: flex;
+        font-size: 14px;
+        width: 180px;
+        justify-content: space-around;
+      }
+
+      .errors-container {
+        color: red;
+        font-size: 10px;
+      }
       input {
         height: 26px;
         border-radius: 8px;
