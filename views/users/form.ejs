@@ -21,7 +21,7 @@
       />
       <div class="form-container">
         <form action="/hotels/<%= type %>/<%= data.id %>" method="post">
-          <h4>ADD HOTEL DATA</h4>
+          <h4>User Profile</h4>
           <label>Name</label>
           <input name="name" type="text" value="<%= data.name %>" />
           <div class="errors-container"><%= errors.name %></div>
@@ -34,7 +34,7 @@
           <div class="errors-container"><%= errors.price %></div>
           <label>Image Source</label>
           <input name="image" type="text" value="<%= data.image %>" />
-          <button><%= type === 'edit'?'update' :'add' %> Hotel</button>
+          <button><%= type === 'edit'?'update' :'register' %> Hotel</button>
         </form>
       </div>
     </div>

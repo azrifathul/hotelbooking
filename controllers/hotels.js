@@ -130,6 +130,7 @@ class Hotels {
       req.session.isLogin = true;
       res.redirect("/hotels");
     }
+
     // getComputedStyle.findAll({
     //   where: {
     //     email: req.body.email,

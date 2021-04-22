@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3333;
-const hotelRouter = require("./routers/hotels");
+const router = require("./routers/index");
 const session = require("express-session");
 
 app.use(
@@ -13,7 +13,7 @@ app.use(
 );
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-app.use("/", hotelRouter);
+app.use("/", router);
 app.get("/", (req, res) => res.redirect("/hotels"));
 
 app.listen(port, () => console.log("working"));

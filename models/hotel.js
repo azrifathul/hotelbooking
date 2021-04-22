@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     static associate(models) {
-      // define association here
+      Hotel.belongsToMany(models.User, { through: models.Booking, foreignKey: 'HotelId' })
     }
   }
   Hotel.init(
