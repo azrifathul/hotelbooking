@@ -9,7 +9,10 @@ class Hotels {
     })
       .then((data) => {
         data.forEach((item) => {
+          const instance = new Hotel();
+
           item.price = moneyFormatter(item.price);
+          item.name = instance.toUpperCaseByWord(item.name);
         });
         res.render("hotels/main", {
           data,
@@ -116,8 +119,7 @@ class Hotels {
   }
 
   static postLoginHandler(req, res) {
-    let salt = bcrypt.genSaltSync(10);
-    let hashResult = bcrypt.hashSync(req.body.password, salt);
+    const hashResult = Hotel.hashingHandler(req.body.password);
 
     //manual
     if (
@@ -125,6 +127,7 @@ class Hotels {
       bcrypt.compareSync("superadmin", hashResult)
     ) {
       req.session.role = "admin";
+      req.session.isLogin = true;
       res.redirect("/hotels");
     }
     // getComputedStyle.findAll({

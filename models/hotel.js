@@ -1,7 +1,24 @@
 "use strict";
 const { Model } = require("sequelize");
+const bcrypt = require("bcryptjs");
+
 module.exports = (sequelize, DataTypes) => {
   class Hotel extends Model {
+    //instance method
+
+    static hashingHandler(val) {
+      let salt = bcrypt.genSaltSync(10);
+      return bcrypt.hashSync(val, salt);
+    }
+
+    toUpperCaseByWord(val) {
+      const splitted = val.split(" ").map((item) => {
+        return item[0].toUpperCase() + item.slice(1);
+      });
+
+      return splitted.join(" ");
+    }
+
     static associate(models) {
       // define association here
     }
